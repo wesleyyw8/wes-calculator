@@ -1,7 +1,7 @@
 ## My thoughts:
 
-Since it is a time pressure task, I did the best I could to in less than 8 hours. If I could have more time I could make my calculator looks nicer.  
-I took sometime to deploy the app to heroku. so you dont need to run the app locally if you dont want.  
+Given the time constraints, I put forth my best effort to complete the task within 8 hours. Given more time, I could have improved the appearance of my calculator. I also made a last-minute attempt to deploy it to Heroku, which resulted in a few additional commits. However, since the deadline has passed, I will not be updating this repository any further.  
+
  ## Assumptions: 
 
 My assuptions are in the ASSUMPTIONS.md file  
