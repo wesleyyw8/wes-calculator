@@ -21,4 +21,4 @@ Run `npm run start` for a dev server. Navigate to `http://localhost:4200/` and y
 ## Running unit tests
 
 Run `npm run test` to execute the angular tests
-Watch out the trick to test a private function wihtout mocking the whole component and services etc.
+Watch out the trick to test a private function wihtout mocking the whole component and services etc because I like to start my code with the tests.
