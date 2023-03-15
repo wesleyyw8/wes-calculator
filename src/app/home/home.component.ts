@@ -20,6 +20,10 @@ export class HomeComponent implements OnInit{
     
   }
 
+  public calculatorOnClick(str: string): void {
+    this.expression += str;
+  }
+
   public randomNumberOnClick() {
     this.isLoading = true;
     this.apiService.getRandomNumber()

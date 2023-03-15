@@ -14,3 +14,31 @@
     <div [innerText]="resultsHtml"></div>
   </div>
 </div>
+<div class="calculator">
+  <button type="button" class="btn btn-secondary" (click)="calculatorOnClick('(')">(</button>
+  <button type="button" class="btn btn-secondary" (click)="calculatorOnClick(')')">)</button>
+
+  <button type="button" class="btn btn-secondary" (click)="calculatorOnClick('sin')">Sin</button>
+  <button type="button" class="btn btn-secondary" (click)="calculatorOnClick('cos')">Cos</button>
+  <button type="button" class="btn btn-secondary" (click)="calculatorOnClick('tan')">Tan</button>
+
+  <button type="button" class="btn btn-secondary" (click)="calculatorOnClick('1')">1</button>
+  <button type="button" class="btn btn-secondary" (click)="calculatorOnClick('2')">2</button>
+  <button type="button"  class="btn btn-secondary" (click)="calculatorOnClick('3')">3</button>
+  <button type="button"  class="btn btn-secondary" (click)="calculatorOnClick('/')">/</button>
+
+  <button type="button"  class="btn btn-secondary" (click)="calculatorOnClick('4')">4</button>
+  <button type="button"  class="btn btn-secondary" (click)="calculatorOnClick('5')">5</button>
+  <button type="button"  class="btn btn-secondary" (click)="calculatorOnClick('6')">6</button>
+  <button type="button"  class="btn btn-secondary" (click)="calculatorOnClick('-')">-</button>
+
+  <button type="button"  class="btn btn-secondary" (click)="calculatorOnClick('7')">7</button>
+  <button type="button"  class="btn btn-secondary" (click)="calculatorOnClick('8')">8</button>
+  <button type="button"  class="btn btn-secondary" (click)="calculatorOnClick('9')">9</button>
+  <button type="button"  class="btn btn-secondary" (click)="calculatorOnClick('+')">+</button>
+
+  <button type="button"  class="btn btn-secondary" (click)="calculatorOnClick('.')">.</button>
+  <button type="button"  class="btn btn-danger" (click)="expression = ''">Clear</button>
+  <button type="button"  class="btn btn-success" (click)="validateExpression(expression)">=</button>
+  <button type="button"  class="btn btn-secondary" (click)="calculatorOnClick('*')">*</button>
+</div>
