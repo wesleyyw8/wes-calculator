@@ -1,0 +1,3 @@
+Hello, I realize that the code assignment test specified not to use external libraries. However, I utilized Angular as the framework for developing my single-page application since SuprNation uses Angular.
+
+Since it is the hability to undertake research whilst delivering a solution under time pressure. I did a trick in the angular unint tests in order to test my private functions without have to mock the TestBed

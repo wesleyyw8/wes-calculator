@@ -1,0 +1,9 @@
+.expression-container {
+  
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.is-invalid {
+  border: 1px solid red;
+}

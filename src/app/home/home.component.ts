@@ -1,12 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
+  public error: boolean = false;
+  public expression = '';
+  public result = '';
 
+  constructor(private elementRef: ElementRef) { }
+
+  ngOnInit(): void {
+    
+  }
+
+  public validateExpression(expression: string) {
+    this.error = false;
+    this.result = '';
+    const result = this.evaluateExpression(expression);
+    if (isNaN(result)) {
+      this.error = true;
+    } else {
+      this.result = result;
+    }
+  }
+  
   private isValidMathExpression(expression: string = ''): boolean {
     const operators = ['+', '-', '*', '/', 'sin', 'cos', 'tan'];
     const regex = /(?:\d+(\.\d+)?|[+\-*/()]|[a-z]+)/g;
@@ -35,11 +55,15 @@ export class HomeComponent {
     expression = expression.replace(/sin/g, "Math.sin").replace(/cos/g, "Math.cos").replace(/tan/g, "Math.tan");
     
     // Use Function constructor to create a function from the expression
-    const func = new Function(`return ${expression}`);
+    try {
+      const func = new Function(`return ${expression}`);
+      // Call the function to get the result
+      const result = func();
+      
+      return result;
+    } catch(error) {
+      return error;
+    }
     
-    // Call the function to get the result
-    const result = func();
-    
-    return result;
   }
 }
