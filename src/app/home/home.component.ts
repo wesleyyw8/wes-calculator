@@ -8,7 +8,8 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit{
   public error: boolean = false;
   public expression = '';
-  public result = '';
+  public results: Array<string> = [];
+  public resultsHtml: String = '';
 
   constructor(private elementRef: ElementRef) { }
 
@@ -18,12 +19,16 @@ export class HomeComponent implements OnInit{
 
   public validateExpression(expression: string) {
     this.error = false;
-    this.result = '';
     const result = this.evaluateExpression(expression);
+    if (expression === this.results[this.results.length -1]) {
+      return;
+    }
     if (isNaN(result)) {
       this.error = true;
     } else {
-      this.result = result;
+      this.results.push(result);
+      this.results = this.results.slice(-5);
+      this.resultsHtml = this.results.join('\n');
     }
   }
   

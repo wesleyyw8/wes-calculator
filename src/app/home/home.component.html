@@ -1,11 +1,11 @@
 <div class="expression-container">
   <div class="controls">
     Type any math expression over here: <input type="text" [ngClass]="{'is-invalid': error}" [(ngModel)]="expression"
-      (ngModelChange)="validateExpression($event)">
-    <div *ngIf="result">Result: {{result}}</div>
+      (ngModelChange)="validateExpression($event.trim())">
     <div *ngIf="error" class="is-invalid">Type in the correct format</div>
   </div>
-  <div class="last-results">
-    Last Results:
+  <div class="last-results" *ngIf="results.length > 0">
+    <span>Last Results:</span> 
+    <div [innerText]="resultsHtml"></div>
   </div>
 </div>
