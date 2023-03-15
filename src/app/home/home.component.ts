@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
-  private isValidMathExpression(expression: string): boolean {
+  private isValidMathExpression(expression: string = ''): boolean {
     const operators = ['+', '-', '*', '/', 'sin', 'cos', 'tan'];
     const regex = /(?:\d+(\.\d+)?|[+\-*/()]|[a-z]+)/g;
     const stack = [];
@@ -27,6 +27,6 @@ export class HomeComponent {
         }
       }
     } 
-    return stack.length === 0 && !expression.endsWith('+') && !expression.endsWith('-')
+    return stack.length === 0 && !expression.trim().endsWith('+') && !expression.trim().endsWith('-')
   }
 }
