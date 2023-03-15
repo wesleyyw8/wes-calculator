@@ -6,16 +6,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  
-  private isValidMathExpression(expr: string): boolean {
-    //this regex will solve expressions like "3 + 2 + 4", "+3 + 2 + 4", "2 + 4", but not match expressions like "+3 + 2 + 4 +" or "3 + 2 + 4 +".
-    const numberRegex = /^\s*(\+|-)?\d+(\s*[+*\/-]\s*(\+|-)?\d+)*\s*$/;
 
-    if (numberRegex.test(expr)) {
-      return true;
-    }
-    return false;
-    // const senCosTgRegex = 
-    // return numberRegex.test(expr);
+  private isValidMathExpression(expression: string): boolean {
+    const operators = ['+', '-', '*', '/', 'sin', 'cos', 'tan'];
+    const regex = /(?:\d+(\.\d+)?|[+\-*/()]|[a-z]+)/g;
+    const stack = [];
+
+    let match;
+    while ((match = regex.exec(expression)) !== null) {
+      const token = match[0];
+      if (token === '(') {
+        stack.push(token);
+      } else if (token === ')') {
+        if (stack.length === 0 || stack.pop() !== '(') {
+          return false;
+        }
+      } else if (operators.includes(token)) {
+        if (stack.length > 0 && stack[stack.length - 1] !== '(') {
+          return false;
+        }
+      }
+    } 
+    return stack.length === 0 && !expression.endsWith('+') && !expression.endsWith('-')
   }
 }

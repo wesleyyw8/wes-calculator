@@ -37,25 +37,35 @@ describe('HomeComponent', () => {
       expect(new HomeComponent().isValidMathExpression('-2')).toBeTrue();
     });
 
-    xit('should be a INVALID math expressions 4', () => {
+    it('should be a INVALID math expressions 4', () => {
       // @ts-expect-error
       expect(new HomeComponent().isValidMathExpression('3 + +')).toBeFalse();
     });
 
-    xit('should be a INVALID math expressions 5', () => {
+    it('should be a INVALID math expressions 5', () => {
       // @ts-expect-error
       expect(new HomeComponent().isValidMathExpression('3+')).toBeFalse();
     });
 
     
-    xit('should be a valid math expressions 4', () => {
+    it('should be a valid math expressions 6', () => {
       // @ts-expect-error
       expect(new HomeComponent().isValidMathExpression('sin(sin(30) + cos(20))')).toBeTrue();
     });
 
-    xit('should be a valid math expressions', () => {
+    it('should be a valid math expressions 7', () => {
       // @ts-expect-error
       expect(new HomeComponent().isValidMathExpression('sin(30) + cos(20)')).toBeTrue();
+    });
+    
+    it('should be a invalid math expressions', () => {
+      // @ts-expect-error
+      expect(new HomeComponent().isValidMathExpression('sin(30')).toBeFalse();
+    });
+
+    it('should be a invalid math expressions', () => {
+      // @ts-expect-error
+      expect(new HomeComponent().isValidMathExpression('cos(30')).toBeFalse();
     });
 
 
@@ -69,9 +79,5 @@ describe('HomeComponent', () => {
 
 
 
-    // it('should be a invalid math expressions', () => {
-    //   // @ts-expect-error
-    //   expect(new HomeComponent().isValidMathExpression('sin(30')).toBeTrue();
-    // });
   })
 });
