@@ -1,0 +1,14 @@
+.app {
+    margin: 0 20px;
+  }
+  .nav-link {
+    font-size: large;
+    cursor: pointer;
+  }
+  
+  nav.navbar-light {
+    margin-bottom: 10px;
+    .navbar-nav .nav-link.active {
+      color: #007ACC
+    }
+  }
