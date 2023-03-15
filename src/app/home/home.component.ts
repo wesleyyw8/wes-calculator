@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit{
 
   public calculatorOnClick(str: string): void {
     this.expression += str;
+    this.validateExpression(this.expression);
   }
 
   public randomNumberOnClick() {
@@ -42,10 +43,11 @@ export class HomeComponent implements OnInit{
 
   public validateExpression(expression: string) {
     this.error = false;
-    const result = this.evaluateExpression(expression);
-    if (expression.endsWith(' ') || expression === this.results[this.results.length -1]) {
+    if (!expression.endsWith('=')) {
       return;
     }
+    expression = expression.substring(0, expression.length -1);
+    const result = this.evaluateExpression(expression);
     if (isNaN(result)) {
       this.error = true;
     } else {

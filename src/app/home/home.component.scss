@@ -1,5 +1,4 @@
 .expression-container {
-  
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -17,7 +16,7 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 5px;
   width: 50%;
-  margin-top: 100px;
+  margin-top: 10px;
   background-color: orange;
   padding: 10px;
 }
