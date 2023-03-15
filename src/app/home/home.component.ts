@@ -1,4 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
+import { catchError, of } from 'rxjs';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-home',
@@ -10,17 +12,34 @@ export class HomeComponent implements OnInit{
   public expression = '';
   public results: Array<string> = [];
   public resultsHtml: String = '';
+  public isLoading = false;
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef, private apiService: ApiService) { }
 
   ngOnInit(): void {
     
   }
 
+  public randomNumberOnClick() {
+    this.isLoading = true;
+    this.apiService.getRandomNumber()
+    .pipe(
+      catchError((error) => {
+        console.error(error);
+        return of('error');
+        this.isLoading = false;
+      })
+    )
+    .subscribe((num: any) => { //the type should be num over here. I dont know why my visual studio is complaing about it.
+      this.expression = num;
+      this.isLoading = false;
+    });
+  }
+
   public validateExpression(expression: string) {
     this.error = false;
     const result = this.evaluateExpression(expression);
-    if (expression === this.results[this.results.length -1]) {
+    if (expression.endsWith(' ') || expression === this.results[this.results.length -1]) {
       return;
     }
     if (isNaN(result)) {

@@ -1,11 +1,16 @@
 <div class="expression-container">
   <div class="controls">
-    Type any math expression over here: <input type="text" [ngClass]="{'is-invalid': error}" [(ngModel)]="expression"
-      (ngModelChange)="validateExpression($event.trim())">
+    Type any math expression over here:
+    <div class="spinner-border" role="status" *ngIf="isLoading">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <input type="text" [ngClass]="{'is-invalid': error}" [(ngModel)]="expression" [disabled]="isLoading"
+      (ngModelChange)="validateExpression($event)">
+    <button class="btn-random-number"(click)="randomNumberOnClick()">Random Number</button>
     <div *ngIf="error" class="is-invalid">Type in the correct format</div>
   </div>
   <div class="last-results" *ngIf="results.length > 0">
-    <span>Last Results:</span> 
+    <span>Last 5 Results:</span>
     <div [innerText]="resultsHtml"></div>
   </div>
 </div>
