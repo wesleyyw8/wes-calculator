@@ -16,7 +16,7 @@ Run `npm install` in oder to install the project's dependencies.
 
 ## Development server
 
-Run `npm run start` for a dev server. Navigate to `http://localhost:4200/` and you will see the website.
+Run `npm run serve` for a dev server. Navigate to `http://localhost:4200/` and you will see the website.
 
 ## Running unit tests
 
